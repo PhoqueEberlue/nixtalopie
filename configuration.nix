@@ -59,6 +59,10 @@
       monospace = [ "FiraCode" ];
     };
   };
+
+  programs.fish = {
+    enable = true;
+  };
   
   # Can't manage to make it work, maybe fira doesn't work on console?
   # console.packages = with pkgs; [ fira-code ];  
@@ -66,7 +70,14 @@
 
   # Needed for dwl, maybe move it to the corresponding file?
   hardware.graphics.enable = true;
-  services.xserver.enable = true;
+  services = {
+    xserver = {
+      # I think this is necessary for xwayland
+      enable = true;
+      # This disables the default display manager
+      displayManager.startx.enable = true;
+    };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -85,17 +96,18 @@
     packages = with pkgs; [];
   };
 
-  # Enable automatic login for the user.
-  services.getty.autologinUser = "andrew";
+  security.sudo.extraRules = [
+    {  
+      users = [ "andrew" ];
+      commands = [
+        # Security goes brrrrrrrrrrrrr
+        { command = "ALL" ; options= [ "NOPASSWD" ]; }
+      ];
+    }
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    # Enabling my own custom packages built with mkDerivation for example
-    # wlroots_0_19 = (pkgs.callPackage /etc/nixos/wlroots.nix {});
-    # dwl-main = (pkgs.callPackage /etc/nixos/dwl.nix {});
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -116,6 +128,11 @@
 
     rustc
     cargo
+
+    spotify
+    pavucontrol
+
+    wl-clipboard
   ];       
 
   # Some programs need SUID wrappers, can be configured further or are
