@@ -58,11 +58,7 @@
     defaultFonts = {
       monospace = [ "FiraCode" ];
     };
-  };
-
-  programs.fish = {
-    enable = true;
-  };
+  }; 
   
   # Can't manage to make it work, maybe fira doesn't work on console?
   # console.packages = with pkgs; [ fira-code ];  
@@ -105,7 +101,7 @@
       ];
     }
   ];
-
+ 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -133,7 +129,7 @@
     pavucontrol
 
     wl-clipboard
-  ];       
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
