@@ -9,6 +9,9 @@
       ./machines/hw-config-msi.nix
       ./nixvim
       ./dwl
+      ./fish
+      ./user
+      ./variables.nix
     ];
 
   # disabling flakes for now
@@ -82,25 +85,7 @@
     options = "caps:escape";
   };
 
-  console.useXkbConfig = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.andrew = {
-    isNormalUser = true;
-    description = "andrew";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
-    packages = with pkgs; [];
-  };
-
-  security.sudo.extraRules = [
-    {  
-      users = [ "andrew" ];
-      commands = [
-        # Security goes brrrrrrrrrrrrr
-        { command = "ALL" ; options= [ "NOPASSWD" ]; }
-      ];
-    }
-  ];
+  console.useXkbConfig = true; 
  
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -129,6 +114,9 @@
     pavucontrol
 
     wl-clipboard
+    wbg
+
+    element-desktop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
