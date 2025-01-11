@@ -1,3 +1,2 @@
 - nvim plugins
-- fish
-- starting dwlb
+- fix automatic indentations of nix files
