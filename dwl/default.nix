@@ -1,6 +1,6 @@
 { pkgs, ... }: 
 {
-  # Does it have a risk to override (or be overriden by) overlays that would be stored somewhere else?
+  # Setting up DWL with a lot of overlays because I want to use specific versions
   nixpkgs.overlays = [
     ( final: prev: {
         wlroots_0_18 = (prev.wlroots_0_18.overrideAttrs {
@@ -32,11 +32,6 @@
 
           patches = [
             ./mergedallpatch.patch
-            # ./home-manager/dwl/ipc.patch
-            # ./home-manager/dwl/xwayland.patch
-            # ./home-manager/dwl/cyclelayouts.patch
-            # ./home-manager/dwl/restartdwl.patch
-            # ./home-manager/dwl/alltag.patch
           ];
           }).override {
             # My own config
@@ -46,6 +41,7 @@
     )
     ( final: prev: {
         dwlb = (prev.dwlb.override {
+          # My own config
           configH = ./dwlb-config.h;
         });
       }

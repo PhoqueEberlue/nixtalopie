@@ -117,6 +117,8 @@
     wbg
 
     element-desktop
+
+    tree
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
