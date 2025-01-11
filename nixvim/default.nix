@@ -1,11 +1,9 @@
-{...}: 
+{ ... }:
 let
   # Fetching nixvim from git
-  nixvim = import (builtins.fetchGit {
-    url = "https://github.com/nix-community/nixvim";
-  });
-in
-{
+  nixvim = import
+    (builtins.fetchGit { url = "https://github.com/nix-community/nixvim"; });
+in {
   imports = [
     # Loading nixvim's module so we can use it in programs
     nixvim.nixosModules.nixvim
@@ -14,12 +12,13 @@ in
   programs.nixvim = {
     enable = true;
 
-    imports = [ 
-      ./keymaps.nix 
-      ./options.nix 
+    imports = [
+      ./keymaps.nix
+      ./options.nix
       ./plugins/nvim-tree.nix
       ./plugins/lsp.nix
       ./plugins/auto-save.nix
+      ./plugins/telescope.nix
       # idk about harpoon, not using it that much
       # ./plugins/harpoon.nix
     ];
@@ -38,7 +37,7 @@ in
 
     plugins.auto-save.enable = true;
 
-    globals.mapleader = " "; 
+    globals.mapleader = " ";
 
     # Always display signcolumn even if there are no diagnostic icons to prevent "jumping" (Not available through opts.* apparently?)
     extraConfigVim = ''

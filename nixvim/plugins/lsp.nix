@@ -107,6 +107,14 @@
         };
         nixd = {
           enable = true;
+          settings = {
+            nixpkgs = {
+              expr = "import <nixpkgs> { }";
+            };
+            formatting = {
+              command = [ "nixfmt" ];
+            };
+          };
         };
       };
       keymaps.lspBuf = {
