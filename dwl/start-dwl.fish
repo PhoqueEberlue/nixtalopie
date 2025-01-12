@@ -10,7 +10,7 @@ while $cond || test -e /tmp/restart_dwl
 
     # Lmao fixme: find a better solution to send updates to dwlb and to load the bg
     sleep 2
-    wbg /home/andrew/my-dot-files/photos/annecy-lake-from-the-trees.jpg &; disown
+    wbg /etc/nixos/background/annecy-lake-from-the-trees.jpg &; disown
     # Update dwlb every 10sc
     while pidof dwl
         /etc/nixos/dwl/update-dwlb.sh

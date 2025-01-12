@@ -3,16 +3,24 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
+let 
+  dwl-custom = pkgs.callPackage ./dwl/default.nix { configH = ./dwl/dwl-config.h; };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./machines/hw-config-msi.nix
       ./nixvim
-      ./dwl
+      # ./dwl
       ./fish
       ./user
+      ./steam
       ./variables.nix
     ];
+
+  nixpkgs.overlays = [
+    (import ./overlays.nix)
+  ];
 
   # disabling flakes for now
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -93,32 +101,43 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    git
+    lshw
     acpi
 
-    dwl
+    # WM related
+    dwl-custom
     dwlb 
-  
+    wl-clipboard
+    wbg
+    grim
+    slurp
+
     kitty
     fastfetch
     brave
     fuzzel
     brightnessctl
 
-    rustc
-    cargo
-
     spotify
     pavucontrol
 
-    wl-clipboard
-    wbg
-
     element-desktop
+    discord
 
     tree
+
+    # dev
+    util-linux
+    git
+
+    gnumake
+    cmake
+    pkg-config
+
+    rustc
+    cargo
+
+    btop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
