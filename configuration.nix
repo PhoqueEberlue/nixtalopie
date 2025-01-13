@@ -25,9 +25,24 @@ in
   # disabling flakes for now
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd /etc/nixos/dwl/start-dwl.fish";
+        user = "${config.username}";
+      };
+    };
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # To detect windows -> to try
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "nodev";
+  # boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -111,6 +126,7 @@ in
     wbg
     grim
     slurp
+    mesa
 
     kitty
     fastfetch
