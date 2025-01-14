@@ -8,7 +8,7 @@ final: prev: {
       owner = "wlroots";
       repo = "wlroots";
       rev = "master";
-      hash = "sha256-2bMV213ENfYWzzujlZ7c477/1pexrQttWeM3mvqdoLs=";
+      hash = "sha256-itELarxPdIBx5EhDxXZht4Iw8kddaiHVHuAWtf0pGfU=";
     };
   });
   # dwl-custom = (prev.dwl-custom.override {
