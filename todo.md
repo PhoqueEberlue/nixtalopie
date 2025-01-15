@@ -1,2 +1,3 @@
 - nvim plugins
 - fix automatic indentations of nix files
+- fish already creates a folder on install which prevents the symlink to be created
