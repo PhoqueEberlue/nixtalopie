@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   # Fetching nixvim from git
   nixvim = import
@@ -19,6 +19,8 @@ in {
       ./plugins/lsp.nix
       ./plugins/auto-save.nix
       ./plugins/telescope.nix
+      ./plugins/dap.nix
+      ./plugins/autoclose.nix
       # idk about harpoon, not using it that much
       # ./plugins/harpoon.nix
     ];
@@ -35,7 +37,7 @@ in {
       };
     };
 
-    plugins.auto-save.enable = true;
+    plugins.nix.enable = true;
 
     globals.mapleader = " ";
 
