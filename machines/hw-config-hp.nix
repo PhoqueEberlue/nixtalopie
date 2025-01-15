@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
 
   # I have tearing when not using latest kernel
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   environment.systemPackages = [ pkgs.linuxPackages_latest.perf ];
 
   fileSystems."/" =
