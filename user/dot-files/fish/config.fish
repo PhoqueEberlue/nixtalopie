@@ -69,17 +69,8 @@ function watch-exec
     end
 end
 
-#export GTK_THEME=Adwaita:dark 
-#export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-#export QT_STYLE_OVERRIDE=Adwaita-Dark
-#export GTK_IM_MODULE=ibus
-#export QT_IM_MODULE=ibus
-#export GLFW_IM_MODULE=ibus
-
 fish_add_path /usr/local/texlive/2024/bin/x86_64-linux
 
-# Created by `pipx` on 2024-10-10 08:15:49
-set PATH $PATH /home/andrew/.local/bin
 set EDITOR nvim
 
 # cargo-asm
