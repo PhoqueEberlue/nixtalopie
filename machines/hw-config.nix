@@ -1,1 +1,0 @@
-hw-config-hp.nix
