@@ -9,7 +9,7 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./machines/hw-config-msi.nix
+      ./machines/hw-config.nix
       ./nixvim
       # ./dwl
       ./fish
@@ -53,6 +53,7 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
   # Set your time zone.
 
@@ -75,8 +76,8 @@ in
 
   # Fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
     fira-code
+    nerd-fonts.fira-code
   ];
   
   fonts.fontconfig = {
@@ -118,6 +119,8 @@ in
   environment.systemPackages = with pkgs; [
     lshw
     acpi
+    networkmanagerapplet
+    openconnect
 
     # WM related
     dwl-custom
