@@ -21,6 +21,7 @@ in {
       ./plugins/telescope.nix
       ./plugins/dap.nix
       ./plugins/autoclose.nix
+      ./plugins/gitsigns.nix
       # idk about harpoon, not using it that much
       # ./plugins/harpoon.nix
     ];
