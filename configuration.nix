@@ -33,16 +33,7 @@ in
         user = "${config.username}";
       };
     };
-  };
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # To detect windows -> to try
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "nodev";
-  # boot.loader.grub.useOSProber = true;
+  }; 
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -130,6 +121,8 @@ in
     grim
     slurp
     mesa
+
+    protonup
 
     kitty
     fastfetch

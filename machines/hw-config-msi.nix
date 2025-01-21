@@ -8,12 +8,20 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # Idk can't manage to make grub work, or maybe it works but I'm to dumb, need to work on it to enable dual boot
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "nodev";
+  # boot.loader.grub.useOSProber = true;
+
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" "rtsx_usb_sdmmc" ];
   boot.initrd.kernelModules = [ ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+
+  boot.kernelParams = [ "intel_iommu=igfx_off" "nvidia-drm.modeset=1" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/32a4e4b6-1680-4ffb-bc31-eeb9473fd457";
@@ -56,7 +64,6 @@
     ];
 
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -84,9 +91,10 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
 
     prime = {
+      sync.enable = true;
 	  intelBusId = "PCI:0:2:0";
 	  nvidiaBusId = "PCI:1:0:0";
 	};
