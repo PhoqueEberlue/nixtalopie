@@ -34,7 +34,7 @@ in {
       settings = {
         transparent = true;
         # Important to disable the background color of line numbers
-        colors.theme.all.ui.bg_gutter = "none";
+        # colors.theme.all.ui.bg_gutter = "none";
       };
     };
 
