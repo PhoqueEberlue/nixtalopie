@@ -58,11 +58,15 @@
     };
 
     adapters = {
-      executables = { 
+      executables = {
         lldb = { 
           command = "${pkgs.lldb}/bin/lldb-dap"; 
-          args = [ "" ];
+          # args = [ "" ];
         }; 
+        # gdb = {
+        #   command = "${pkgs.gdb}/bin/gdb";
+        #   args = [ "--interpreter=dap" "--eval-command" "set print pretty on" ];
+        # };
       };
     };  
 
@@ -73,11 +77,22 @@
           type = "lldb";
           request = "launch";
           program = "\${command:pickFile}";
-          cwd = "\${workspaceFolder}";
+          sourcePath = "\${workspaceFolder}";
+          debuggerRoot = "\${workspaceFolder}";
           stopOnEntry = false;
-          args = [ "" ];
+          # args = [ "" ];
         }
       ];
+      # c = [
+      #   {
+      #     name = "Launch";
+      #     type = "gdb";
+      #     request = "launch";
+      #     program = "\${command:pickFile}";
+      #     cwd = "\${workspaceFolder}";
+      #     stopAtBeginningOfMainSubprogram = false;
+      #   }
+      # ];
       cpp = c;
       rust = c;
     };

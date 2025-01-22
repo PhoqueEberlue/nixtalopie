@@ -7,6 +7,11 @@
       ignore = false;
     };
     openOnSetup = true;
+
+    view = {
+      preserveWindowProportions = true;
+      width = 30;
+    };
   };
 
   # Needed for nvim-tree
