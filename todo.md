@@ -1,3 +1,5 @@
 - nvim plugins
 - fix automatic indentations of nix files
 - fish already creates a folder on install which prevents the symlink to be created
+- bind blink-cmp completion tab to jump from parameters when completing a function
+- maybe separate packages from msi and hp computers?

@@ -108,10 +108,16 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Utils
     lshw
     acpi
     networkmanagerapplet
     openconnect
+    btop
+    unzip
+    zip
+    imagemagick
+    sxiv
 
     # WM related
     dwl-custom
@@ -123,7 +129,7 @@ in
     mesa
 
     protonup
-
+    libreoffice
     kitty
     fastfetch
     brave
@@ -141,15 +147,16 @@ in
     # dev
     util-linux
     git
-
+    gcc
     gnumake
     cmake
     pkg-config
-
     rustc
     cargo
+    graphviz
 
-    btop
+    texlive.combined.scheme-full
+    zathura
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
