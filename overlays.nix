@@ -11,12 +11,8 @@ final: prev: {
       hash = "sha256-itELarxPdIBx5EhDxXZht4Iw8kddaiHVHuAWtf0pGfU=";
     };
   });
-  # dwl-custom = (prev.dwl-custom.override {
-  #   # My own config
-  #   configH = ./dwl/dwl-config.h;
-  # });
   dwlb = (prev.dwlb.override {
     # My own config
-    configH = ./dwl/dwlb-config.h;
+    configH = ./common/dwl/dwlb-config.h;
   });
 }

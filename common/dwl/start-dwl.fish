@@ -13,7 +13,7 @@ while $cond || test -e /tmp/restart_dwl
     wbg /etc/nixos/background/annecy-lake-from-the-trees.jpg &; disown
     # Update dwlb every 10sc
     while pidof dwl
-        /etc/nixos/dwl/update-dwlb.sh
+        /etc/nixos/common/dwl/update-dwlb.sh
         sleep 10
     end
 end
