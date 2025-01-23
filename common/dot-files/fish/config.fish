@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 function v
-    nvim .
+    nvim $argv
 end
 
 function l
@@ -68,8 +68,6 @@ function watch-exec
         sleep 1
     end
 end
-
-fish_add_path /usr/local/texlive/2024/bin/x86_64-linux
 
 set EDITOR nvim
 
