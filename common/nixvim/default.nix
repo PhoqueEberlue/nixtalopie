@@ -22,6 +22,7 @@ in {
       ./plugins/dap.nix
       ./plugins/autoclose.nix
       ./plugins/gitsigns.nix
+      ./plugins/image.nix
       # idk about harpoon, not using it that much
       # ./plugins/harpoon.nix
     ];
