@@ -14,4 +14,4 @@ battery_info=$(acpi -b | awk '{print $4}' | sed 's/,//')
 cpu_temp=$(sensors | awk '/^Package id 0:/ {print $4}')
 
 # Output with Emojis
-dwlb -status all "🤖 $cpu_usage | 🐏 $ram_usage | 💾 $disk_usage | 🔋 $battery_info | $system_time"
+dwlb -status all " $cpu_usage |  $ram_usage |  $disk_usage |  $battery_info | $system_time"
