@@ -112,6 +112,7 @@ in
     sxiv
     fastfetch
     pavucontrol
+    lm_sensors
 
     # WM related
     dwl-custom

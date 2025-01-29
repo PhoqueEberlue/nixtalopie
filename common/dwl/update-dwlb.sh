@@ -13,5 +13,20 @@ battery_info=$(acpi -b | awk '{print $4}' | sed 's/,//')
 # Processor Temperature
 cpu_temp=$(sensors | awk '/^Package id 0:/ {print $4}')
 
+
+battery_level=$(echo $battery_info | sed 's/%//')
+
+if [ $battery_level -gt 80 ]; then
+    battery_icon=""
+elif [ $battery_level -gt 60 ]; then
+    battery_icon=""
+elif [ $battery_level -gt 40 ]; then
+    battery_icon=""
+elif [ $battery_level -gt 20 ]; then
+    battery_icon=""
+else
+    battery_icon=""
+fi
+
 # Output with Emojis
-dwlb -status all " $cpu_usage |  $ram_usage |  $disk_usage |  $battery_info | $system_time"
+dwlb -status all " $cpu_usage $cpu_temp |  $ram_usage |  $disk_usage | $battery_icon $battery_info | $system_time"
