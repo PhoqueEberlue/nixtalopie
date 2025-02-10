@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 let
   # Fetching nixvim from git
   nixvim = import
@@ -23,6 +23,7 @@ in {
       ./plugins/autoclose.nix
       ./plugins/gitsigns.nix
       ./plugins/image.nix
+      ./plugins/treesitter.nix
       # ./plugins/nvim-surround.nix # TODO fix keymaps ('c' is interacting with previous word motion)
       # idk about harpoon, not using it that much
       # ./plugins/harpoon.nix

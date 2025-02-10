@@ -105,8 +105,7 @@
           installCargo = false;
           installRustc = false;
         };
-        typst_lsp = {
-          package = pkgs.tinymist;
+        tinymist = {
           enable = true;
         };
         nixd = {
