@@ -1,6 +1,4 @@
-- nvim plugins
 - bind blink-cmp completion tab to jump from parameters when completing a function
-- maybe separate packages from msi and hp computers?
 - bind nvim-tree correctly maybe? It has been 3 years now...
 - bind vnew to something
 - configure wl-clipboard to work with images?

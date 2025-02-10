@@ -1,12 +1,12 @@
 { pkgs, ...}: {
-  plugins.dap = {
-    enable = true;
+  plugins = {
+    dap-virtual-text.enable = true;
 
-    extensions = {
-      dap-virtual-text.enable = true;
-
-      dap-ui = {
-        enable = true;
+    # Debugger interface
+    dap-ui = {
+      enable = true;
+      
+      settings = {
         # Define interface layouts
         layouts = [
           {
@@ -46,6 +46,7 @@
             size = 15;
           }
         ];
+
         mappings = {
           edit = "e";
           expand = [ "<CR>" "<2-LeftMouse>" ];
@@ -57,44 +58,48 @@
       };
     };
 
-    adapters = {
-      executables = {
-        lldb = { 
-          command = "${pkgs.lldb}/bin/lldb-dap"; 
-          # args = [ "" ];
-        }; 
-        # gdb = {
-        #   command = "${pkgs.gdb}/bin/gdb";
-        #   args = [ "--interpreter=dap" "--eval-command" "set print pretty on" ];
-        # };
-      };
-    };  
+    dap = {
+      enable = true;
 
-    configurations = rec {
-      c = [
-        {
-          name = "LLDB Debugger";
-          type = "lldb";
-          request = "launch";
-          program = "\${command:pickFile}";
-          sourcePath = "\${workspaceFolder}";
-          debuggerRoot = "\${workspaceFolder}";
-          stopOnEntry = false;
-          # args = [ "" ];
-        }
-      ];
-      # c = [
-      #   {
-      #     name = "Launch";
-      #     type = "gdb";
-      #     request = "launch";
-      #     program = "\${command:pickFile}";
-      #     cwd = "\${workspaceFolder}";
-      #     stopAtBeginningOfMainSubprogram = false;
-      #   }
-      # ];
-      cpp = c;
-      rust = c;
+      adapters = {
+        executables = {
+          lldb = { 
+            command = "${pkgs.lldb}/bin/lldb-dap"; 
+            # args = [ "" ];
+          }; 
+          # gdb = {
+          #   command = "${pkgs.gdb}/bin/gdb";
+          #   args = [ "--interpreter=dap" "--eval-command" "set print pretty on" ];
+          # };
+        };
+      };  
+
+      configurations = rec {
+        c = [
+          {
+            name = "LLDB Debugger";
+            type = "lldb";
+            request = "launch";
+            program = "\${command:pickFile}";
+            sourcePath = "\${workspaceFolder}";
+            debuggerRoot = "\${workspaceFolder}";
+            stopOnEntry = false;
+            # args = [ "" ];
+          }
+        ];
+        # c = [
+        #   {
+        #     name = "Launch";
+        #     type = "gdb";
+        #     request = "launch";
+        #     program = "\${command:pickFile}";
+        #     cwd = "\${workspaceFolder}";
+        #     stopAtBeginningOfMainSubprogram = false;
+        #   }
+        # ];
+        cpp = c;
+        rust = c;
+      };
     };
   };
 

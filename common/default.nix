@@ -113,6 +113,7 @@ in
     fastfetch
     pavucontrol
     lm_sensors
+    cups
 
     # WM related
     dwl-custom

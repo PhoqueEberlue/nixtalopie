@@ -1,5 +1,5 @@
 # Lsp config file
-{...}: {
+{ pkgs, ...}: {
   plugins = {
     # Even more snippets
     nvim-snippets = {
@@ -104,6 +104,10 @@
           # I'll do it myself
           installCargo = false;
           installRustc = false;
+        };
+        typst_lsp = {
+          package = pkgs.tinymist;
+          enable = true;
         };
         nixd = {
           enable = true;
