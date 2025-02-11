@@ -18,7 +18,7 @@ in
   };
 
   security.sudo.extraRules = [
-    {  
+    {
       users = [ "${config.username}" ];
       commands = [
         # Security goes brrrrrrrrrrrrr
@@ -124,6 +124,8 @@ in
     slurp
     fuzzel
     brightnessctl
+    wdisplays
+    wl-mirror
 
     # Applications
     brave
