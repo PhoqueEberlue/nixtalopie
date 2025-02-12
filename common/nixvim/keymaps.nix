@@ -402,7 +402,16 @@
         noremap = true;
         desc = "Change to column";
       };
-    } 
+    }
+    {
+      key = "<Esc>";
+      action = "<C-\\><C-n>";
+      mode = [ "t" ];
+      options = {
+        noremap = true;
+        desc = "Escape terminal mode";
+      };
+    }
     # Seems not to work anymore on nixos?
     # {
     #   key = "<leader>w";
