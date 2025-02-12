@@ -25,9 +25,7 @@ in {
       ./plugins/image.nix
       ./plugins/treesitter.nix
       ./plugins/toggleterm.nix
-      # ./plugins/nvim-surround.nix # TODO fix keymaps ('c' is interacting with previous word motion)
-      # idk about harpoon, not using it that much
-      # ./plugins/harpoon.nix
+      ./plugins/nvim-surround.nix # TODO fix keymaps ('c' is interacting with previous word motion)
     ];
 
     clipboard.register = "unnamedplus";
