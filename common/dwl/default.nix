@@ -45,7 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "dwl";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-SpfjQfzvbpDiihziyKGPoBwvp3evgCQQhhjldAE/MwY="; 
+    hash = "sha256-qO7k2Sj4nWrXrM2FwNkgnAK2D76bIWa2q625k3jDBUA="; 
   };
 
   patches = [
