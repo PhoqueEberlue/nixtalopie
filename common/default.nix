@@ -114,6 +114,9 @@ in
     pavucontrol
     lm_sensors
     cups
+    wakeonlan
+    curl
+    wget
 
     # WM related
     dwl-custom
