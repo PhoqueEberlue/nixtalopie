@@ -1,5 +1,14 @@
 # Lsp config file
-{ pkgs, ...}: {
+{ ... }: {
+
+  # Don't show diagnostics by default
+  diagnostics = {
+    # virtual_lines = {
+    #   only_current_line = true;
+    # };
+    virtual_text = false;
+  };
+
   plugins = {
     # Even more snippets
     nvim-snippets = {
@@ -91,13 +100,18 @@
     # };
     cmp-cmdline = {
       enable = true; # autocomplete for cmdline
-    }; 
+    };
 
     lsp = {
       enable = true;
       servers = {
         clangd = {
           enable = true;
+          cmd = [
+            "clangd"
+            "--background-index"
+            "--clang-tidy"
+          ];
         };
         rust_analyzer = {
           enable = true;
