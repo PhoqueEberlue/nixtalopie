@@ -26,6 +26,8 @@ File structure:
 │   └── msi-laptop
 │       ├── hardware.nix       Specific hardware config for my msi laptop
 │       └── steam
+├── standalone                 Folder containing nix-shell examples to use standalone parts of my config
+│   └── nvim-shell.nix         Use my nvim config anywhere
 └── background
 ```
 
