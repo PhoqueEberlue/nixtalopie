@@ -1,10 +1,10 @@
 { config, pkgs, ...}:
 let 
   dwl-custom = pkgs.callPackage ./dwl/default.nix { configH = ./dwl/dwl-config.h; };
+  nvim-custom = pkgs.callPackage ./nixvim/default.nix { inherit pkgs; system = config.system; };
 in
 {
   imports = [
-    ./nixvim
     ./fish
     ./dot-files
   ];
@@ -141,6 +141,7 @@ in
     gimp
 
     # dev
+    nvim-custom
     util-linux
     git
     gcc

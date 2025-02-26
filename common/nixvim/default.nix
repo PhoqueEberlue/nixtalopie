@@ -1,52 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 let
   # Fetching nixvim from git
   nixvim = import
     (builtins.fetchGit { url = "https://github.com/nix-community/nixvim"; });
-in {
-  imports = [
-    # Loading nixvim's module so we can use it in programs
-    nixvim.nixosModules.nixvim
-  ];
 
-  programs.nixvim = {
-    enable = true;
-
-    imports = [
-      ./keymaps.nix
-      ./options.nix
-      ./plugins/nvim-tree.nix
-      ./plugins/lsp.nix
-      ./plugins/auto-save.nix
-      ./plugins/telescope.nix
-      ./plugins/dap.nix
-      ./plugins/autoclose.nix
-      ./plugins/gitsigns.nix
-      ./plugins/image.nix
-      ./plugins/treesitter.nix
-      ./plugins/toggleterm.nix
-      ./plugins/nvim-surround.nix
-    ];
-
-    clipboard.register = "unnamedplus";
-
-    colorscheme = "kanagawa";
-    colorschemes.kanagawa = {
-      enable = true;
-      settings = {
-        transparent = true;
-        # Important to disable the background color of line numbers
-        # colors.theme.all.ui.bg_gutter = "none";
-      };
-    };
-
-    plugins.nix.enable = true;
-
-    globals.mapleader = " ";
-
-    # Always display signcolumn even if there are no diagnostic icons to prevent "jumping" (Not available through opts.* apparently?)
-    extraConfigVim = ''
-      set scl=yes
-    '';
+  nixvim' = nixvim.legacyPackages.${pkgs.hostPlatform.system};
+  nixvimModule = {
+    module = import ./config.nix; # import the module directly
   };
-}
+  nvim = nixvim'.makeNixvimWithModule nixvimModule;
+in
+  # Return nvim packaged and ready to go with my configuration
+  nvim
