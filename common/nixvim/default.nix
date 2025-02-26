@@ -25,7 +25,7 @@ in {
       ./plugins/image.nix
       ./plugins/treesitter.nix
       ./plugins/toggleterm.nix
-      ./plugins/nvim-surround.nix # TODO fix keymaps ('c' is interacting with previous word motion)
+      ./plugins/nvim-surround.nix
     ];
 
     clipboard.register = "unnamedplus";

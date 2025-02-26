@@ -138,6 +138,7 @@ in
     element-desktop
     discord
     zathura
+    gimp
 
     # dev
     util-linux
