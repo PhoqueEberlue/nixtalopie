@@ -65,7 +65,6 @@
         executables = {
           lldb = { 
             command = "${pkgs.lldb}/bin/lldb-dap"; 
-            # args = [ "" ];
           }; 
           # gdb = {
           #   command = "${pkgs.gdb}/bin/gdb";
@@ -84,7 +83,7 @@
             sourcePath = "\${workspaceFolder}";
             debuggerRoot = "\${workspaceFolder}";
             stopOnEntry = false;
-            # args = [ "" ];
+            args.__raw = ''function() return vim.split(vim.fn.input("Args: "), " ") end'';
           }
         ];
         # c = [
@@ -185,7 +184,6 @@
     #     desc = "Go to line (no execute)";
     #   };
     # }
-    
     # {
     #   mode = "n";
     #   key = "<leader>dj";
@@ -279,6 +277,6 @@
   extraConfigLua = ''
     require('dap').listeners.after.event_initialized['dapui_config'] = require('dapui').open
     require('dap').listeners.before.event_terminated['dapui_config'] = require('dapui').close
-    require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
-  '';
+    require('dap').listeners.before.event_exited['dapui_config'] = function() require('dapui').close(); vim.cmd("NvimTreeResize 30"); end
+    '';
 }
