@@ -44,8 +44,8 @@ stdenv.mkDerivation (finalAttrs: {
     domain = "codeberg.org";
     owner = "dwl";
     repo = "dwl";
-    rev = "main";
-    hash = "sha256-qO7k2Sj4nWrXrM2FwNkgnAK2D76bIWa2q625k3jDBUA="; 
+    rev = finalAttrs.version;
+    hash = "sha256-E4GH+mjlNwYHnsOhAxGOwbFD8qhHXFOs112wrrpWc0c="; 
   };
 
   patches = [
