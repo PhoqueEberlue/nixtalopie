@@ -9,6 +9,13 @@ in
     ./dot-files
   ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 3;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${config.username}" = {
     isNormalUser = true;
@@ -139,6 +146,7 @@ in
     discord
     zathura
     gimp
+    whatsapp-for-linux
 
     # dev
     nvim-custom
