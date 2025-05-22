@@ -8,13 +8,13 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # Bootloader. 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
   # I have tearing when not using latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;

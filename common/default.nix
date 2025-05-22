@@ -1,6 +1,5 @@
 { config, pkgs, ...}:
 let 
-  dwl-custom = pkgs.callPackage ./dwl/default.nix { configH = ./dwl/dwl-config.h; };
   nvim-custom = pkgs.callPackage ./nixvim/default.nix { inherit pkgs; system = config.system; };
 in
 {
@@ -124,9 +123,12 @@ in
     wakeonlan
     curl
     wget
+    xxd
+    file
+    qmk
 
     # WM related
-    dwl-custom
+    dwl
     dwlb 
     wl-clipboard
     wbg

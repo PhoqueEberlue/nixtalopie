@@ -13,6 +13,8 @@ static const float focuscolor[]            = COLOR(0xffffffff);
 static const float urgentcolor[]           = COLOR(0xff0000ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
+static const char *cursor_theme            = "Skyrim-by-ru5tyshark-cursors";
+static const char cursor_size[]            = "42"; /* Make sure it's a valid integer, otherwise things will break */
 
 /* tagging - TAGCOUNT must be no greater than 31 */
 #define TAGCOUNT (10)
@@ -114,8 +116,8 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define TAGKEYS(KEY,SKEY,TAG) \
 	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
 	{ MODKEY|WLR_MODIFIER_CTRL,  KEY,            toggleview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_SHIFT, SKEY,           tag,             {.ui = 1 << TAG} }, \
-	{ MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,SKEY,alltag,    {.ui = 1 << TAG} }
+	{ MODKEY|WLR_MODIFIER_SHIFT, SKEY,           tag,             {.ui = 1 << TAG} }
+//  { MODKEY|WLR_MODIFIER_CTRL|WLR_MODIFIER_SHIFT,SKEY,alltag,    {.ui = 1 << TAG} }
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -146,7 +148,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_f,          setlayout,        {.v = &layouts[1]} },
 	{ MODKEY,                    XKB_KEY_m,          setlayout,        {.v = &layouts[2]} },
 	{ MODKEY,                    XKB_KEY_space,      setlayout,        {0} },*/
- 	{ MODKEY,                    XKB_KEY_space,      cyclelayout,      {.i = +1 } },
+ 	{ MODKEY,                    XKB_KEY_space,      nextlayout,       {.i = +1 } },
 	{ MODKEY,                    XKB_KEY_g,          togglefloating,   {0} },
 	{ MODKEY,                    XKB_KEY_f,          togglefullscreen, {0} },
 	{ MODKEY,                    XKB_KEY_0,          view,             {.ui = ~0} },
@@ -155,8 +157,8 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_s,          focusmon,         {.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY,                    XKB_KEY_q,          tagmon,           {.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY,                    XKB_KEY_j,          tagmon,           {.i = WLR_DIRECTION_RIGHT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,          alltagmon,        {.i = WLR_DIRECTION_LEFT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_j,          alltagmon,        {.i = WLR_DIRECTION_RIGHT} },
+	//{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,          alltagmon,        {.i = WLR_DIRECTION_LEFT} },
+	//{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_j,          alltagmon,        {.i = WLR_DIRECTION_RIGHT} },
 	TAGKEYS(          XKB_KEY_a, XKB_KEY_A,                            0),
 	TAGKEYS(          XKB_KEY_o, XKB_KEY_O,                            1),
 	TAGKEYS(          XKB_KEY_e, XKB_KEY_E,                            2),

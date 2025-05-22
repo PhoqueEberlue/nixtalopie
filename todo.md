@@ -1,4 +1,7 @@
+- GO TO HOME-MANAGER and FLAKES
+- fix fish config -> not working anymore with symlinks because the files are readonly and fish wants to write them
 - bind blink-cmp completion tab to jump from parameters when completing a function
 - bind nvim-tree correctly maybe? It has been 3 years now...
 - bind vnew to something
 - configure wl-clipboard to work with images?
+- add skyrim cursor to reproducibility :)
