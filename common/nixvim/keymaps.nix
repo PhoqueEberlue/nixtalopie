@@ -412,6 +412,15 @@
         desc = "Escape terminal mode";
       };
     }
+    {
+      key = ",";
+      action = "\"";
+      mode = [ "n" "v" "s" "o"];
+      options = {
+        noremap = true;
+        desc = "Access registers";
+      };
+    }
     # Seems not to work anymore on nixos?
     # {
     #   key = "<leader>w";
