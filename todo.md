@@ -1,4 +1,5 @@
 - GO TO HOME-MANAGER and FLAKES
+- dwl: keybind to swap the windows in the current workspace with another
 - fix fish config -> not working anymore with symlinks because the files are readonly and fish wants to write them
 - bind blink-cmp completion tab to jump from parameters when completing a function
 - bind nvim-tree correctly maybe? It has been 3 years now...

@@ -12,7 +12,7 @@
     ./plugins/image.nix
     ./plugins/treesitter.nix
     ./plugins/toggleterm.nix
-    ./plugins/nvim-surround.nix
+    # ./plugins/nvim-surround.nix
   ];
 
   clipboard.register = "unnamedplus";
