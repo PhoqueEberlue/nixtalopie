@@ -33,24 +33,57 @@ in
     }
   ];
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd /etc/nixos/common/dwl/start-dwl.fish";
-        user = "${config.username}";
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd \"sway --config ~/.config/sway/config\"";
+          user = "${config.username}";
+        };
       };
     };
+
+    xserver = {
+      # I think this is necessary for xwayland
+      enable = true;
+      # This disables the default display manager
+      displayManager.startx.enable = true;
+
+      # Also set up dwm when we need
+      # Xorg only sessions
+      windowManager.dwm.enable = true;
+
+      autoRepeatDelay = 350;
+      autoRepeatInterval = 75;
+
+      xkb = {
+        layout = "us";
+        variant = "dvorak-intl";
+        options = "caps:escape";
+      };
+    };
+
+    gnome.gnome-keyring.enable = true;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  programs = {
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+    };
+    nm-applet.enable = true;
+  };
+
+  hardware.graphics.enable = true;
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  programs.nm-applet.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    hostName = "nixos"; # Define your hostname.
+  };
 
   # Set your time zone.
-
   time.timeZone = "Europe/Paris";
 
   # Select internationalisation properties.
@@ -76,35 +109,19 @@ in
   };
 
   # Fonts
-  fonts.packages = with pkgs; [
-    fira-code
-    nerd-fonts.fira-code
-  ];
-  
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [ "FiraCode" ];
-    };
-  };
+  fonts = {
+    packages = with pkgs; [
+      fira-code
+      nerd-fonts.fira-code
+    ];
 
-  # Needed for dwl
-  hardware.graphics.enable = true;
-  services = {
-    xserver = {
-      # I think this is necessary for xwayland
+    fontconfig = {
       enable = true;
-      # This disables the default display manager
-      displayManager.startx.enable = true;
+      defaultFonts = {
+        monospace = [ "FiraCode" ];
+      };
     };
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "dvorak-intl";
-    options = "caps:escape";
-  };
+  }; 
 
   # So useful!! I can use the same layout in TTYs
   console.useXkbConfig = true; 
@@ -134,17 +151,20 @@ in
     file
     qmk
 
-    # WM related
-    dwl
-    dwlb 
+    # Wayland related
     wl-clipboard
-    wbg
     grim
     slurp
-    fuzzel
     brightnessctl
     wdisplays
     wl-mirror
+    pipewire
+    wireplumber
+    swaysome
+    wmenu # for sway
+    dmenu # for dwm
+    mako
+    xdg-desktop-portal
 
     # Applications
     brave
@@ -155,7 +175,8 @@ in
     discord
     zathura
     gimp
-    whatsapp-for-linux
+    whatsapp-for-linux 
+    obs-studio
 
     # dev
     nvim-custom
