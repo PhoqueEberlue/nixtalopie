@@ -165,9 +165,11 @@ in
     dmenu # for dwm
     mako
     xdg-desktop-portal
+    swaylock-fancy
+    wev
 
     # Applications
-    brave
+    firefox
     libreoffice
     kitty
     spotify
@@ -177,6 +179,7 @@ in
     gimp
     whatsapp-for-linux 
     obs-studio
+    kdePackages.kolourpaint
 
     # dev
     nvim-custom
