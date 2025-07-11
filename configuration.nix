@@ -2,40 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, ... }:
-let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/master.tar.gz;
-in
+{ pkgs, ... }:
 {
   imports = [
-    ./common           # Common configuration for all computers
     ./specific/current # Specific configuration for each computer
     ./variables.nix    # Global variables that can be used through the configuration
-    (import "${home-manager}/nixos") # Home manager
+    ./nixos.nix
   ];
 
-  nixpkgs.overlays = [
-    (import ./overlays.nix)
-  ];
-
-  home-manager.useGlobalPkgs = true;
-
-  home-manager.users.andrew = { pkgs, ... }: {
-    wayland.windowManager.hyprland = {
-      enable = true;
-      plugins = [ pkgs.hyprlandPlugins.hyprsplit ];
-
-      xwayland.enable = true;
-      # put my config here for now
-      extraConfig = lib.strings.fileContents ./hyprland.conf;
-    };
-
-    home.packages = [ pkgs.tmux ];
-  
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "25.05";
+  nix.settings = {
+    keep-outputs = false;
+    keep-derivations = false;
   };
+
+  # required even with home manager
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

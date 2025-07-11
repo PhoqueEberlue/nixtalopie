@@ -12,6 +12,7 @@
     ./plugins/image.nix
     ./plugins/treesitter.nix
     ./plugins/toggleterm.nix
+    ./plugins/render-markdown.nix
     # ./plugins/nvim-surround.nix
   ];
 

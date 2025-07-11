@@ -1,24 +1,26 @@
 # My NixOS configuration
 
-At the moment this is a *vanilla* NixOS configuration i.e. no flakes and home-manager.
+~At the moment this is a *vanilla* NixOS configuration i.e. no flakes and home-manager.~
+
+I am now fully flake and home-manager, but take a look at this commit [`a508b8e46473ad9c2de420f98e8793100d37e954`](https://github.com/PhoqueEberlue/nixtalopie/tree/a508b8e46473ad9c2de420f98e8793100d37e954)
+if you want to take a look at a vanilla config.
 
 File structure:
 ```
-├── configuration.nix <------- ENTRY POINT OF THE CONFIG
+├── flake.nix         <------- ENTRY POINT OF THE CONFIG
 ├── variables.nix              Global variables
-├── overlays.nix
-├── common                     Folder containing configurations common to every computers
-│   ├── dot-files              Every folder inside dot-files/ will be symlinked to $username/.config/
-│   │   ├── fish
-│   │   ├── fuzzel
-│   │   └── kitty
-│   ├── dwl                    Suckless Wayland compositor with my patches
-│   ├── fish                   Fish shell
-│   └── nixvim                 Neovim editor configured with Nix through the Nixvim project
-│       ├── default.nix
-│       ├── keymaps.nix
-│       ├── options.nix
-│       └── plugins            Neovim plugins configuration
+├── nixos.nix                  Non-home-manager config
+├── home-manager
+│   ├── default.nix
+│   ├── fish
+│   └── hyprland
+├── nixvim                     Using neovim declaratively with the nixvim project
+│   ├── config.nix
+│   ├── flake.lock
+│   ├── flake.nix
+│   ├── keymaps.nix
+│   ├── options.nix
+│   └── plugins                Neovim plugins configurations
 ├── specific                   Folder containing specific configuration for each computer
 │   ├── current -> msi-laptop/ Symlink pointing to the current configuration, it is gitignored
 │   ├── hp-laptop
@@ -26,8 +28,6 @@ File structure:
 │   └── msi-laptop
 │       ├── hardware.nix       Specific hardware config for my msi laptop
 │       └── steam
-├── standalone                 Folder containing nix-shell examples to use standalone parts of my config
-│   └── nvim-shell.nix         Use my nvim config anywhere
 └── background
 ```
 

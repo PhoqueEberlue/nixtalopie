@@ -1,13 +1,5 @@
 { config, pkgs, ...}:
-let 
-  nvim-custom = pkgs.callPackage ./nixvim/default.nix { inherit pkgs; system = config.system; };
-in
 {
-  imports = [
-    ./fish
-    ./dot-files
-  ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.loader.systemd-boot = {
@@ -63,13 +55,15 @@ in
         options = "caps:escape";
       };
     };
-
-    gnome.gnome-keyring.enable = true;
   };
 
-  programs = {
-    nm-applet.enable = true;
-  };
+  nixpkgs.overlays = [
+    (final: prev: {
+      dwm = (prev.dwm.override {
+        conf = ./dwm-config.h;
+      });
+    })
+  ];
 
   hardware.graphics.enable = true;
 
@@ -123,72 +117,5 @@ in
   console.useXkbConfig = true; 
 
   # Allow unfree packages, needed for nvidia drivers I think
-  nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    # Utils
-    lshw
-    acpi
-    networkmanagerapplet
-    openconnect
-    btop
-    unzip
-    zip
-    imagemagick
-    sxiv
-    fastfetch
-    pavucontrol
-    lm_sensors
-    cups
-    wakeonlan
-    curl
-    wget
-    xxd
-    file
-    qmk
-
-    # Wayland related
-    wl-clipboard
-    grim
-    slurp
-    brightnessctl
-    wdisplays
-    wl-mirror
-    pipewire
-    wireplumber
-    mako
-    wev
-    woomer
-    wbg
-    wmenu # for wayland
-    dmenu # for xorg
-    waybar
-    hyprpicker
-
-    # Applications
-    firefox
-    libreoffice
-    kitty
-    spotify
-    element-desktop
-    discord
-    zathura
-    gimp
-    whatsapp-for-linux 
-    obs-studio
-    kdePackages.kolourpaint
-
-    # dev
-    nvim-custom
-    util-linux
-    git
-    gcc
-    gnumake
-    cmake
-    pkg-config
-    rustc
-    cargo
-    graphviz
-    tree
-  ];
+  nixpkgs.config.allowUnfree = true; 
 }

@@ -5,7 +5,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    texlive.combined.scheme-full
+    texlive.combined.scheme-basic
     typst
     teams-for-linux
     drawio
