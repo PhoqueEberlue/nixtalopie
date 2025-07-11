@@ -38,7 +38,7 @@ in
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd \"sway --config ~/.config/sway/config\"";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
           user = "${config.username}";
         };
       };
@@ -68,10 +68,6 @@ in
   };
 
   programs = {
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-    };
     nm-applet.enable = true;
   };
 
@@ -160,13 +156,14 @@ in
     wl-mirror
     pipewire
     wireplumber
-    swaysome
-    wmenu # for sway
-    dmenu # for dwm
     mako
-    xdg-desktop-portal
-    swaylock-fancy
     wev
+    woomer
+    wbg
+    wmenu # for wayland
+    dmenu # for xorg
+    waybar
+    hyprpicker
 
     # Applications
     firefox
