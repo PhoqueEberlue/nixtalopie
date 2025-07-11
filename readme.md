@@ -2,8 +2,8 @@
 
 ~At the moment this is a *vanilla* NixOS configuration i.e. no flakes and home-manager.~
 
-I am now fully flake and home-manager, but take a look at this commit [`a508b8e46473ad9c2de420f98e8793100d37e954`](https://github.com/PhoqueEberlue/nixtalopie/tree/a508b8e46473ad9c2de420f98e8793100d37e954)
-if you want to take a look at a vanilla config.
+I have now fully embraced flakes and home-manager, but take a look at this commit [`a508b8e46473ad9c2de420f98e8793100d37e954`](https://github.com/PhoqueEberlue/nixtalopie/tree/a508b8e46473ad9c2de420f98e8793100d37e954)
+if you want to see a vanilla config.
 
 File structure:
 ```
