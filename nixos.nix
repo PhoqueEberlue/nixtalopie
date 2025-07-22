@@ -103,6 +103,7 @@
     packages = with pkgs; [
       fira-code
       nerd-fonts.fira-code
+      noto-fonts-cjk-sans
     ];
 
     fontconfig = {

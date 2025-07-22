@@ -45,6 +45,7 @@
     qmk
     ncdu
     dysk
+    riffdiff
 
     # Wayland related
     wl-clipboard
@@ -63,6 +64,7 @@
     dmenu # for xorg
     waybar
     hyprpicker
+    hyprprop
 
     # Applications
     firefox
