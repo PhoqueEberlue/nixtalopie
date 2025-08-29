@@ -20,6 +20,9 @@
       size = 12.0;
     };
     themeFile = "kanagawa";
+    extraConfig = ''
+      scrollback_lines 5000
+    '';
   }; 
 
   home.packages = with pkgs; [
