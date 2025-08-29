@@ -133,6 +133,12 @@
             };
           };
         };
+        zls = {
+          enable = true;
+        };
+        pyright = {
+          enable = true;
+        };
       };
       keymaps.lspBuf = {
         "X" = "hover";
