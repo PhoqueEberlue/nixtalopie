@@ -57,8 +57,6 @@ function watch-exec
     end
 end
 
-set EDITOR nvim
-
 function icat $argv
     kitten icat $argv
 end
@@ -100,3 +98,6 @@ function fish_prompt --description 'Write out the prompt'
 
     echo -n -s (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal (set_color purple) (fish_vcs_prompt) $normal $nix_shell_info " "$prompt_status $suffix " "
 end
+
+set EDITOR nvim
+set fish_color_command blue
