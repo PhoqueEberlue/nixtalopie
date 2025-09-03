@@ -1,4 +1,5 @@
-{ 
+{ pkgs, ... }:
+{
   imports = [
     ./keymaps.nix
     ./options.nix
@@ -14,6 +15,7 @@
     ./plugins/toggleterm.nix
     ./plugins/render-markdown.nix
     # ./plugins/nvim-surround.nix
+    ./plugins/venn.nix
   ];
 
   clipboard.register = "unnamedplus";
@@ -36,4 +38,6 @@
   extraConfigVim = ''
   set scl=yes
   '';
+
+  extraPlugins = [pkgs.vimPlugins.venn-nvim];
 }

@@ -4,7 +4,6 @@
 - bind blink-cmp completion tab to jump from parameters when completing a function
 - bind nvim-tree correctly maybe? It has been 3 years now...
 - bind vnew to something
-- nvim replace mode (R) is overwirtten by lsp rename atm
 - delete is binded two times (i and d), same for visual (v and b)
 - configure wl-clipboard to work with images?
 - add skyrim cursor to reproducibility :)

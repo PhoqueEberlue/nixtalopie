@@ -1,6 +1,15 @@
 {...}: {
   keymaps = [
     {
+      key = "<leader>r";
+      action = "R";
+      mode = [ "n" "v" "s" "o"];
+      options = {
+        noremap = true;
+        desc = "Activate replace mode";
+      };
+    }
+    {
       key = "<Tab>";
       action = "<C-PageDown>";
       options = {
