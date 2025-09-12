@@ -16,6 +16,7 @@
     ./plugins/render-markdown.nix
     # ./plugins/nvim-surround.nix
     ./plugins/venn.nix
+    ./plugins/conform.nix
   ];
 
   clipboard.register = "unnamedplus";
