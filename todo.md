@@ -7,3 +7,4 @@
 - delete is binded two times (i and d), same for visual (v and b)
 - configure wl-clipboard to work with images?
 - add skyrim cursor to reproducibility :)
+- add waybar config here
