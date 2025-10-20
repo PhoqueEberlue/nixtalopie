@@ -17,6 +17,7 @@
     # ./plugins/nvim-surround.nix
     ./plugins/venn.nix
     ./plugins/conform.nix
+    ./plugins/mini-move.nix
   ];
 
   clipboard.register = "unnamedplus";
@@ -37,8 +38,12 @@
 
   # Always display signcolumn even if there are no diagnostic icons to prevent "jumping" (Not available through opts.* apparently?)
   extraConfigVim = ''
-  set scl=yes
+    set scl=yes 
+    set textwidth=100
   '';
 
-  extraPlugins = [pkgs.vimPlugins.venn-nvim];
+  extraPlugins = [
+    pkgs.vimPlugins.venn-nvim
+    pkgs.vimPlugins.mini-move
+  ];
 }

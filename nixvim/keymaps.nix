@@ -1,7 +1,26 @@
 {...}: {
   keymaps = [
     {
-      key = "<leader>r";
+      key = ";";
+      action = ":";
+      options = {
+        noremap = true;
+        silent = false;
+        desc = "command mode";
+      };
+    }
+    {
+      mode = "x";
+      key = ";";
+      action = "<Esc>:%s/\\%V";
+      options = {
+        noremap = true;
+        silent = false;
+        desc = "alternative to visual + command mode so it opens a strict selection instead of a line by line selection";
+      };
+    }
+    {
+      key = "x";
       action = "R";
       mode = [ "n" "v" "s" "o"];
       options = {
@@ -626,5 +645,18 @@
     #   options = {desc = "Debug Configurations";};
     # }
   ];
+
+  extraConfigLua = ''
+    vim.keymap.set("n", "d", function()
+      local col = vim.fn.col(".")
+      local line = vim.api.nvim_get_current_line()
+      local new_line = line:sub(1, col-1) .. tostring(math.random(0,9)) .. line:sub(col+1)
+      vim.api.nvim_set_current_line(new_line)
+    end)
+    
+    vim.keymap.set("n", "D", function()
+      vim.api.nvim_put({tostring(math.random(0,9))}, "c", true, true)
+    end)
+    '';
 }
 

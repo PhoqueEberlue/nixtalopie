@@ -139,6 +139,9 @@
         pyright = {
           enable = true;
         };
+        jdtls = {
+          enable = true;
+        };
       };
       keymaps.lspBuf = {
         "X" = "hover";
