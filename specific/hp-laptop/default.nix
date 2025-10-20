@@ -9,7 +9,9 @@
     typst
     teams-for-linux
     drawio
-  ];
+    python311Packages.pyuv
+    jdk
+  ]; 
 
   programs.virt-manager.enable = true;
 
