@@ -3,14 +3,13 @@
     enable = true;
     openOnSetup = true;
     settings = {
-        disableNetrw = true;
-        git = {
+      disable_netrw = true;
+      git = {
         # Do not hide gitignored files
         ignore = false;
       };
-
       view = {
-        preserveWindowProportions = true;
+        preserve_window_proportions = true;
         width = 30;
       };
     };
