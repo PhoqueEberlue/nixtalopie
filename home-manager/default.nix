@@ -1,4 +1,7 @@
-{ system, pkgs, ... }:
+{ pkgs, ... }:
+let
+  cdvd = pkgs.callPackage ./cdvd/default.nix { };
+in
 {
   services = {
     network-manager-applet.enable = true;
@@ -57,8 +60,6 @@
     brightnessctl
     wdisplays
     wl-mirror
-    pipewire
-    wireplumber
     mako
     wev
     woomer
@@ -68,6 +69,8 @@
     waybar
     hyprpicker
     hyprprop
+    pipewire
+    wireplumber
 
     # Applications
     firefox
@@ -80,6 +83,8 @@
     whatsapp-for-linux 
     obs-studio
     kdePackages.kolourpaint
+    xdg-desktop-portal
+    cdvd
 
     # dev
     util-linux
@@ -90,8 +95,10 @@
     pkg-config
     rustc
     cargo
+    cargo-expand
     graphviz
     tree
+    inetutils
   ];
 
   # The state version is required and should stay at the version you
