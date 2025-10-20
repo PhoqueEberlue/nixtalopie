@@ -5,7 +5,6 @@ in
 {
   services = {
     network-manager-applet.enable = true;
-    gnome-keyring.enable = true;
   };
 
   imports = [
@@ -65,12 +64,9 @@ in
     woomer
     wbg
     wmenu # for wayland
-    dmenu # for xorg
     waybar
     hyprpicker
     hyprprop
-    pipewire
-    wireplumber
 
     # Applications
     firefox

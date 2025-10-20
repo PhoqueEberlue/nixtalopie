@@ -47,10 +47,6 @@
       # This disables the default display manager
       displayManager.startx.enable = true;
 
-      # Also set up dwm when we need
-      # Xorg only sessions
-      windowManager.dwm.enable = true;
-
       autoRepeatDelay = 350;
       autoRepeatInterval = 75;
 
@@ -60,15 +56,31 @@
         options = "caps:escape";
       };
     };
+
+    pipewire = {
+      enable = true;
+      wireplumber.enable = true;
+    };
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      dwm = (prev.dwm.override {
-        conf = ./dwm-config.h;
-      });
-    })
-  ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
+    config = {
+      common = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+      };
+      hyprland = {
+        default = [ "hyprland" ];
+      };
+    };
+  };
 
   hardware.graphics.enable = true;
 
