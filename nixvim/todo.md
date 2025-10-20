@@ -1,0 +1,3 @@
+- bind blink-cmp completion tab to jump from parameters when completing a function
+- bind nvim-tree correctly maybe? It has been 3 years now...
+- bind vnew to something
