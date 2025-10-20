@@ -11,8 +11,13 @@
   users.users."${config.username}" = {
     isNormalUser = true;
     description = "andrew";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "wireshark" ];
     packages = with pkgs; [];
+  };
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
   };
 
   security.sudo.extraRules = [
