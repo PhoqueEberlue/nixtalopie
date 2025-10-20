@@ -18,7 +18,7 @@
 
   # I have tearing when not using latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  environment.systemPackages = [ pkgs.linuxPackages_latest.perf ];
+  environment.systemPackages = [ pkgs.perf ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/2bd0525a-a3f8-4930-aa33-c4f7b8d35ed0";

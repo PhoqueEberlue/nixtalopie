@@ -1,16 +1,18 @@
 {...}: {
   plugins.nvim-tree = {
     enable = true;
-    disableNetrw = true;
-    git = {
-      # Do not hide gitignored files
-      ignore = false;
-    };
     openOnSetup = true;
+    settings = {
+        disableNetrw = true;
+        git = {
+        # Do not hide gitignored files
+        ignore = false;
+      };
 
-    view = {
-      preserveWindowProportions = true;
-      width = 30;
+      view = {
+        preserveWindowProportions = true;
+        width = 30;
+      };
     };
   };
 

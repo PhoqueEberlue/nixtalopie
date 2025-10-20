@@ -2,7 +2,7 @@
 { ... }: {
 
   # Don't show diagnostics by default
-  diagnostics = {
+  diagnostic.settings = {
     # virtual_lines = {
     #   only_current_line = true;
     # };
