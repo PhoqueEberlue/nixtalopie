@@ -1,5 +1,17 @@
 { lib, pkgs, ... }:
 {
+  imports = [
+    ./waybar.nix
+  ];
+
+  # Cursor theme
+  home.pointerCursor = {
+    enable = true;
+    name = "Banana";
+    package = pkgs.banana-cursor;
+    # hyprcursor.size = 34;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [ pkgs.hyprlandPlugins.hyprsplit ];

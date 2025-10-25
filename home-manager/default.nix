@@ -64,7 +64,6 @@ in
     woomer
     wbg
     wmenu # for wayland
-    waybar
     hyprpicker
     hyprprop
 

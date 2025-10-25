@@ -1,3 +1,1 @@
-- fix fish config -> not working anymore with symlinks because the files are readonly and fish wants to write them
-- add skyrim cursor to reproducibility :)
-- add waybar config here
+Feels empty isn't it?
