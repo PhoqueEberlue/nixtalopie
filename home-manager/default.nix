@@ -9,7 +9,7 @@ in
 
   imports = [
     ./fish
-    ./hyprland
+    ./wayland
     ../variables.nix # Global variables that can be used through the configuration
   ];
 
@@ -85,7 +85,6 @@ in
     brightnessctl
     wdisplays
     wl-mirror
-    mako
     wev
     woomer
     wbg

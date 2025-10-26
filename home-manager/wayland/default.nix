@@ -12,6 +12,15 @@
     # hyprcursor.size = 34;
   };
 
+  # Notifier
+  services.mako = {
+    enable = true;
+    settings = {
+      default-timeout = 10000;
+      font = "FiraCode Nerd Font";
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [ pkgs.hyprlandPlugins.hyprsplit ];
