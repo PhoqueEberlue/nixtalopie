@@ -40,7 +40,11 @@
   extraConfigVim = ''
     set scl=yes 
     set textwidth=100
-  '';
+    '';
+
+  extraConfigLua = ''
+    vim.g.clipboard = 'osc52'
+    '';
 
   extraPlugins = [
     pkgs.vimPlugins.venn-nvim
