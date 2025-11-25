@@ -7,7 +7,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim-phoque.url = "path:./nixvim";
-    nixvim-phoque.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, nixvim-phoque, ... }@inputs: {
@@ -17,7 +16,7 @@
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
+          # home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.andrew = {
             home.packages = [
