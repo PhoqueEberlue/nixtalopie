@@ -18,6 +18,8 @@
     ./plugins/venn.nix
     ./plugins/conform.nix
     ./plugins/mini-move.nix
+    ./plugins/csvview.nix
+    ./plugins/leap.nix
   ];
 
   clipboard.register = "unnamedplus";

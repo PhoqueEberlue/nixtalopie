@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   cdvd = pkgs.callPackage ./cdvd/default.nix { };
 in
@@ -7,11 +7,40 @@ in
     network-manager-applet.enable = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [
+    (self: super: {
+      spotify = super.spotify.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ self.makeWrapper ];
+        installPhase = ''
+          ${old.installPhase or ""}
+          wrapProgram $out/bin/spotify \
+          --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+        '';
+      });
+    })
+    (self: super: {
+      teams-for-linux = super.teams-for-linux.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ self.makeWrapper ];
+        installPhase = ''
+          ${old.installPhase or ""}
+          wrapProgram $out/bin/teams-for-linux \
+          --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+        '';
+      });
+    })
+  ];
+
   imports = [
     ./fish
     ./wayland
     ../variables.nix # Global variables that can be used through the configuration
   ];
+
+  programs.spotify-player = {
+    enable = true;
+  };
 
   programs.kitty = {
     enable = true;
@@ -24,8 +53,20 @@ in
     themeFile = "kanagawa";
     extraConfig = ''
       scrollback_lines 5000
+      clipboard_control write-clipboard read-clipboard write-primary read-primary
     '';
   }; 
+
+  xdg.configFile."helix".source = config.lib.file.mkOutOfStoreSymlink
+  "/etc/nixos/home-manager/helix";
+  programs.helix = {
+    enable = true;
+  };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
 
   # Enabling Chinese input method
   i18n.inputMethod = {
@@ -35,7 +76,7 @@ in
       waylandFrontend = true;
       addons = with pkgs; [
         fcitx5-gtk
-        fcitx5-chinese-addons
+        qt6Packages.fcitx5-chinese-addons
         fcitx5-pinyin-zhwiki
         # TODO: theme not working, probably should be activated somehow
         fcitx5-tokyonight
@@ -100,15 +141,17 @@ in
     discord
     zathura
     gimp
-    whatsapp-for-linux 
+    wasistlos
     obs-studio
     kdePackages.kolourpaint
     xdg-desktop-portal
+    teams-for-linux
     cdvd
+    pipes-rs
+    nbsdgames
 
     # dev
     util-linux
-    git
     gcc
     gnumake
     cmake
@@ -119,6 +162,8 @@ in
     graphviz
     tree
     inetutils
+    libwebp
+    zig
   ];
 
   # The state version is required and should stay at the version you

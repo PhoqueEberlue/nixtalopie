@@ -7,7 +7,6 @@
   environment.systemPackages = with pkgs; [
     texlive.combined.scheme-basic
     typst
-    teams-for-linux
     drawio
     python311Packages.pyuv
     jdk

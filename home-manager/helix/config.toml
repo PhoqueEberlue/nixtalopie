@@ -1,0 +1,116 @@
+theme = "kanagawa"
+
+[editor]
+line-number = "relative"
+mouse = false
+
+[editor.auto-save]
+after-delay = { enable = true, timeout = 500 }
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+# Move commands are binded on the right hand
+h = "move_char_left"
+t = "move_visual_line_down"
+n = "move_visual_line_up"
+s = "move_char_right"
+
+T = "goto_last_line"
+N = "goto_file_start"
+
+c = "move_prev_word_start"
+C = "move_prev_long_word_start"
+r = "move_next_word_start"
+R = "move_next_long_word_start"
+
+f = "find_till_char"
+F = "till_prev_char"
+d = "find_next_char"
+D = "find_prev_char"
+
+m = "goto_line_start"
+z = "goto_line_end"
+
+v = "select_mode"
+w = "match_brackets"
+
+# Actions commands are binded on the left hand
+e = "insert_mode"
+u = "append_mode"
+E = "insert_at_line_start"
+U = "insert_at_line_end"
+o = "open_below"
+O = "open_above"
+
+p = "undo"
+P = "redo"
+
+i = "delete_selection"
+I = "delete_selection_noyank"
+
+j = "yank"
+k = "paste_after"
+K = "paste_before"
+
+y = "replace"
+Y = "replace_with_yanked"
+
+q = "change_selection"
+Q = "change_selection_noyank"
+
+[keys.select]
+# Move commands are binded on the right hand
+h = "move_char_left"
+t = "move_visual_line_down"
+n = "move_visual_line_up"
+s = "move_char_right"
+
+T = "goto_last_line"
+N = "goto_file_start"
+
+c = "move_prev_word_start"
+C = "move_prev_long_word_start"
+r = "move_next_word_start"
+R = "move_next_long_word_start"
+
+f = "find_till_char"
+F = "till_prev_char"
+d = "find_next_char"
+D = "find_prev_char"
+
+m = "goto_line_start"
+z = "goto_line_end"
+
+v = "select_mode"
+w = "match_brackets"
+
+# Actions commands are binded on the left hand
+e = "insert_mode"
+u = "append_mode"
+E = "insert_at_line_start"
+U = "insert_at_line_end"
+o = "open_below"
+O = "open_above"
+
+p = "undo"
+P = "redo"
+
+i = "delete_selection"
+I = "delete_selection_noyank"
+
+j = "yank"
+k = "paste_after"
+K = "paste_before"
+
+y = "replace"
+Y = "replace_with_yanked"
+
+q = "change_selection"
+Q = "change_selection_noyank"
