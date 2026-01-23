@@ -5,11 +5,8 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    texlive.combined.scheme-basic
+    texliveSmall
     typst
-    drawio
-    python311Packages.pyuv
-    jdk
   ]; 
 
   programs.virt-manager.enable = true;

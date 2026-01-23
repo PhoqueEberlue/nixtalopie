@@ -1,0 +1,3 @@
+[submodule "nixvim"]
+	path = nixvim
+	url = https://codeberg.org/PhoqueEberlue/nixvim-phoque

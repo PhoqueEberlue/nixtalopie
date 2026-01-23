@@ -7,6 +7,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim-phoque.url = "path:./nixvim";
+
+    # Allows nixvim git submodule to be recognized
+    self.submodules = true;
   };
 
   outputs = { self, nixpkgs, home-manager, nixvim-phoque, ... }@inputs: {
